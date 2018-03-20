@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jiayin.test.bean.User;
 
-@Repository
+
 public interface UserDaoMapper {
 
 	@Select("SELECT id ,user_Name as name ,sex  FROM T_USER")

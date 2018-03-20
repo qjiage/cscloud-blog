@@ -2,17 +2,23 @@ package com.jiayin.test.db;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
 
 @Configuration
 @EnableConfigurationProperties(DruidSettings.class)
 public class DruidDataSourceConfig {
 
+	
 	@Bean
     @ConfigurationProperties("spring.druid.datasource")
     public DruidDataSource dataSource(DruidSettings druidSettings) throws Exception{
@@ -56,6 +62,25 @@ public class DruidDataSourceConfig {
     }
 	
 	
+	@Bean
+    public ServletRegistrationBean druidStatViewServlet() {
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+        registrationBean.addInitParameter("allow", "127.0.0.1");// IP白名单 (没有配置或者为空，则允许所有访问)
+        registrationBean.addInitParameter("deny", "");// IP黑名单 (存在共同时，deny优先于allow)
+        registrationBean.addInitParameter("loginUsername", "root");
+        registrationBean.addInitParameter("loginPassword", "wtadmin");
+        registrationBean.addInitParameter("resetEnable", "false");
+        return registrationBean;
+    }
+
+    @Bean
+    public FilterRegistrationBean druidWebStatViewFilter() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new WebStatFilter());
+        registrationBean.addInitParameter("urlPatterns", "/*");
+        registrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*");
+        return registrationBean;
+    }
+
    
 
 }

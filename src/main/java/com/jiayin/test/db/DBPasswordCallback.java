@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.druid.util.DruidPasswordCallback;
 import com.jiayin.test.util.BaseUtil;
 
-@Component
+//@Component
 public class DBPasswordCallback extends DruidPasswordCallback {
 
 	/**

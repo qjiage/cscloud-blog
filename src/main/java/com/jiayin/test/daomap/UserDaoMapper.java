@@ -3,7 +3,6 @@ package com.jiayin.test.daomap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 
 import com.jiayin.test.bean.User;
 

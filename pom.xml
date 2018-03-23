@@ -20,33 +20,44 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+		</dependency> 
 		<!-- springboot整合 redis -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
-		</dependency>
+		</dependency> -->
+		
+		
+	<!-- servlet-api.jar -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency> 
+		
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			
 			<!-- 移除嵌入式tomcat插件 -->
-			<exclusions>
+		
+<!--  			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-tomcat</artifactId>
 				</exclusion>
-			</exclusions>
-			
+			</exclusions>  -->
+		
 		</dependency>
-
+		
 		<!-- 引入mybatis 启动依赖 -->
-		<dependency>
+ 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.1.1</version>
-		</dependency>
-
+		</dependency> 
+ 
 		<!-- 引入mysql数据库驱动 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -57,13 +68,13 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.0.23</version>
-		</dependency>
+		</dependency> 
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>com.github.ulisesbocchio</groupId>
 			<artifactId>jasypt-spring-boot</artifactId>
 			<version>1.14</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -71,13 +82,7 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- servlet-api.jar -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>cscloud-jiayin</finalName>

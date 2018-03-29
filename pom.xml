@@ -12,52 +12,69 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.1.RELEASE</version>
+		<version>1.5.3.RELEASE</version>
 	</parent>
 
+	<prerequisites>
+		<ppoject.build.sourceEncoding>UTF-8</ppoject.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</prerequisites>
 	<dependencies>
-
+		<!-- 排除 slf4j 的依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency> 
-		<!-- springboot整合 redis -->
-<!-- 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-redis</artifactId>
-		</dependency> -->
+			<artifactId>spring-boot-starter-jersey</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 引入 log4j 的依赖 -->
 		
 		
-	<!-- servlet-api.jar -->
+		
+		
+		
+		 <!-- log4j -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j</artifactId>
+            <version>1.3.8.RELEASE</version>
+        </dependency>
+		
+		
+		
+
+		<!-- servlet-api.jar -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
-		</dependency> 
-		
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			
-			<!-- 移除嵌入式tomcat插件 -->
-		
-<!--  			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>  -->
-		
 		</dependency>
-		
+
+
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+
+<!-- 打war包时加入此项， 告诉spring-boot tomcat相关jar包用外部的，不要打进去 -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>
+
 		<!-- 引入mybatis 启动依赖 -->
- 		<dependency>
+		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.1.1</version>
-		</dependency> 
- 
+		</dependency>
+
 		<!-- 引入mysql数据库驱动 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -68,13 +85,10 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.0.23</version>
-		</dependency> 
+		</dependency>
 
-<!-- 		<dependency>
-			<groupId>com.github.ulisesbocchio</groupId>
-			<artifactId>jasypt-spring-boot</artifactId>
-			<version>1.14</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>com.github.ulisesbocchio</groupId> <artifactId>jasypt-spring-boot</artifactId> 
+			<version>1.14</version> </dependency> -->
 
 		<dependency>
 			<groupId>junit</groupId>
